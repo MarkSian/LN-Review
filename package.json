@@ -1,0 +1,18 @@
+{
+  "name": "ln-review",
+  "version": "1.0.0",
+  "description": "A page for user reviews for light novels",
+  "main": "server.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.9"
+  }
+}
