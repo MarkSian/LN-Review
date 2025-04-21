@@ -17,11 +17,7 @@ Clone the repo and navigate to its root directory. Open your terminal and run th
 - [Reflection](#reflection)
 
 ## Video Demo
-
-<video controls width="600">
-  <source src="./public/readme-media/LN-Review%20Walkthrough%20Video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[Google Drive Video walkthrough video](https://drive.google.com/file/d/1dlXffw_Y-3RzC6QSNPsloMB1PfhbJV2O/view?usp=sharing) 
 
 
 ## Credits
