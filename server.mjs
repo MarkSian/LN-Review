@@ -77,10 +77,29 @@ app.get('/novels', (req, res) => {
 });
 
 // GET novel by ID
+app.get('/novels/:id', (req, res) => {
+    const novel = novels.find(n => n.id === parseInt(req.params.id));
+    if (!novel) return res.status(404).render('404', { title: 'Novel Not Found' });
 
+    const novelReviews = reviews.filter(r => r.novelId === novel.id);
+    res.render('novel-detail', {
+        title: novel.title,
+        novel,
+        reviews: novelReviews
+    });
+});
 
 // POST new novel
-
+app.post('/novels', (req, res) => {
+    const newNovel = {
+        id: novels.length + 1,
+        title: req.body.title,
+        author: req.body.author,
+        genre: req.body.genre
+    };
+    novels.push(newNovel);
+    res.redirect('/novels');
+});
 
 // PUT update novel
 
