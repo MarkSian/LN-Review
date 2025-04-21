@@ -4,9 +4,7 @@ import path from 'path';
 const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res) => {
-    res.send('LN-Review');
-})
+)
 
 // Custom middleware to log request details
 app.use((req, res, next) => {
@@ -47,6 +45,13 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
 });
+
+// Routes
+
+app.get('/', (req, res) => {
+    res.send('LN-Review');
+}
+
 
 //app.listen to start the server *keep at the bottom of the file*
 app.listen(PORT, () => {
