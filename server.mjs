@@ -14,6 +14,13 @@ app.use((req, res, next) => {
     next();
 });
 
+// Set view engine to EJS
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Server static files
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Middleware to parse Form data
 app.use(express.urlencoded({ extended: true }));
 
