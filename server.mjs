@@ -42,14 +42,15 @@ let users = [
     { id: 2, username: 'fantasy_person', joinDate: '2024-01-20' }
 ];
 
+// Middleware For Error Handling
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
 
 //app.listen to start the server *keep at the bottom of the file*
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-// Middleware For Error Handling
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something went wrong!');
-});
+
