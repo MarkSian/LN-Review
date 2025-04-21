@@ -102,15 +102,35 @@ app.post('/novels', (req, res) => {
 });
 
 // PUT update novel
+app.put('/novels/:id', (req, res) => {
+    const novel = novels.find(n => n.id === parseInt(req.params.id));
+    if (!novel) return res.status(404).render('404', { title: 'Novel Not Found' });
 
+    novel.title = req.body.title || novel.title;
+    novel.author = req.body.author || novel.author;
+    novel.genre = req.body.genre || novel.genre;
+
+    res.redirect(`/novels/${novel.id}`);
+});
 
 // DELETE novel by ID
+app.delete('/novels/:id', (req, res) => {
+    const novelIndex = novels.findIndex(n => n.id === parseInt(req.params.id));
+    if (novelIndex === -1) return res.status(404).render('404', { title: 'Novel Not Found' });
 
+    novels.splice(novelIndex, 1);
+    // Also remove associated reviews
+    reviews = reviews.filter(r => r.novelId !== parseInt(req.params.id));
+
+    res.redirect('/novels');
+});
 
 // GET all reviews
 
 
 // POST new review
+
+
 //app.listen to start the server *keep at the bottom of the file*
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

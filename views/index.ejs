@@ -23,8 +23,15 @@
                 <a href="/reviews">View All Reviews</a>
             </nav>
         </section>
-
-    </main>
+        <section>
+            <h3>Add a New Novel</h3>
+            <form action="/novels" method="POST">
+                <input type="text" name="title" placeholder="Title" required>
+                <input type="text" name="author" placeholder="Author" required>
+                <input type="text" name="genre" placeholder="Genre" required>
+                <button type="submit">Add Novel</button>
+            </form>
+        </section>
 </body>
 
 </html>
