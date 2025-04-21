@@ -57,6 +57,25 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Light Novel Reviews' });
 });
 
+// GET all novels
+app.get('/novels', (req, res) => {
+    // Filter by genre if query parameter exists
+    const genreFilter = req.query.genre;
+    let filteredNovels = novels;
+
+    if (genreFilter) {
+        filteredNovels = novels.filter(novel =>
+            novel.genre.toLowerCase() === genreFilter.toLowerCase()
+        );
+    }
+
+    res.render('novels', {
+        title: 'Light Novels',
+        novels: filteredNovels,
+        genreFilter
+    });
+});
+
 
 //app.listen to start the server *keep at the bottom of the file*
 app.listen(PORT, () => {
