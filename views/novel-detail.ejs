@@ -1,0 +1,44 @@
+<!-- filepath: d:\DEN-01\LN-Review\views\novel-detail.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>
+            <%= novel.title %>
+        </h1>
+        <a href="/novels">Back to Novels</a>
+    </header>
+    <main>
+        <p><strong>Author:</strong>
+            <%= novel.author %>
+        </p>
+        <p><strong>Genre:</strong>
+            <%= novel.genre %>
+        </p>
+        <h2>Reviews</h2>
+        <ul>
+            <% reviews.forEach(review=> { %>
+                <li>
+                    <p><strong>Rating:</strong>
+                        <%= review.rating %>/5
+                    </p>
+                    <p><strong>Comment:</strong>
+                        <%= review.comment %>
+                    </p>
+                </li>
+                <% }); %>
+        </ul>
+    </main>
+</body>
+
+</html>

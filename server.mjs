@@ -23,8 +23,9 @@ app.set('views', path.join(__dirname, 'views'));
 // Server static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Middleware to parse Form data
+// Middleware to parse form data and JSON
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Data storage for the project
 let novels = [
@@ -44,11 +45,7 @@ let users = [
     { id: 2, username: 'fantasy_person', joinDate: '2024-01-20' }
 ];
 
-// Middleware For Error Handling
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something went wrong!');
-});
+
 
 // Routes
 
@@ -103,9 +100,15 @@ app.post('/novels', (req, res) => {
 
 // PUT update novel
 app.put('/novels/:id', (req, res) => {
+    if (!req.body) {
+        return res.status(400).send('Bad Request: Missing request body');
+    }
+
+    console.log(req.body); // Debugging: Log the request body
     const novel = novels.find(n => n.id === parseInt(req.params.id));
     if (!novel) return res.status(404).render('404', { title: 'Novel Not Found' });
 
+    // Novel properties
     novel.title = req.body.title || novel.title;
     novel.author = req.body.author || novel.author;
     novel.genre = req.body.genre || novel.genre;
@@ -126,10 +129,42 @@ app.delete('/novels/:id', (req, res) => {
 });
 
 // GET all reviews
-
+app.get('/reviews', (req, res) => {
+    res.render('reviews', {
+        title: 'Reviews',
+        reviews: reviews.map(review => ({
+            ...review,
+            novel: novels.find(n => n.id === review.novelId),
+            user: users.find(u => u.id === review.userId)
+        })),
+        novels,
+        users
+    });
+});
 
 // POST new review
+app.post('/reviews', (req, res) => {
+    const newReview = {
+        id: reviews.length + 1,
+        novelId: parseInt(req.body.novelId),
+        userId: parseInt(req.body.userId),
+        rating: parseInt(req.body.rating),
+        comment: req.body.comment
+    };
+    reviews.push(newReview);
+    res.redirect('/reviews');
+});
 
+// Error handling for 404
+app.use((req, res) => {
+    res.status(404).render('404', { title: 'Page Not Found' });
+});
+
+// Middleware For Error Handling
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
 
 //app.listen to start the server *keep at the bottom of the file*
 app.listen(PORT, () => {
