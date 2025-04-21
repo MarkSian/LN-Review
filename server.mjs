@@ -36,8 +36,8 @@ let novels = [
 
 let reviews = [
     { id: 1, novelId: 1, userId: 1, rating: 5, comment: 'Amazing character development and world building!' },
-    { id: 2, novelId: 1, userId: 2, rating: 4, comment: 'Great world-building and love the dark setting' },
-    { id: 3, novelId: 2, userId: 1, rating: 5, comment: 'Re:zero is a beautifully made light novel and the anime was adapted well.' }
+    { id: 2, novelId: 2, userId: 2, rating: 4, comment: 'Great world-building and love the dark setting' },
+    { id: 3, novelId: 3, userId: 1, rating: 5, comment: 'Re:zero is a beautifully made light novel and the anime was adapted well.' }
 ];
 
 let users = [
