@@ -6,3 +6,12 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+header {
+    background: #f4f4f4;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+}
