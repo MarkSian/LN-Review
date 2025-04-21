@@ -41,9 +41,6 @@
                         <p>Genre: <%= novel.genre %>
                         </p>
                         <a href="/novels/<%= novel.id %>">View Details</a>
-                        <form action="/novels/<%= novel.id %>?_method=DELETE" method="POST" style="display: inline;">
-                            <button type="submit">Delete</button>
-                        </form>
                     </li>
                     <% }); %>
             </ul>
