@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 
 const app = express();
 const PORT = 3000;
@@ -13,6 +14,8 @@ app.use((req, res, next) => {
     next();
 });
 
+// Middleware to parse Form data
+app.use(express.urlencoded({ extended: true }));
 
 // Data storage for the project
 let novels = [
