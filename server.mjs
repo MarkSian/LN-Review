@@ -76,7 +76,22 @@ app.get('/novels', (req, res) => {
     });
 });
 
+// GET novel by ID
 
+
+// POST new novel
+
+
+// PUT update novel
+
+
+// DELETE novel by ID
+
+
+// GET all reviews
+
+
+// POST new review
 //app.listen to start the server *keep at the bottom of the file*
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
