@@ -1,10 +1,14 @@
 import express from 'express';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
 
-)
+
 
 // Custom middleware to log request details
 app.use((req, res, next) => {
@@ -48,9 +52,10 @@ app.use((err, req, res, next) => {
 
 // Routes
 
+// Home Route
 app.get('/', (req, res) => {
-    res.send('LN-Review');
-}
+    res.render('index', { title: 'Light Novel Reviews' });
+});
 
 
 //app.listen to start the server *keep at the bottom of the file*
