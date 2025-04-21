@@ -17,7 +17,7 @@ Clone the repo and navigate to its root directory. Open your terminal and run th
 - [Reflection](#reflection)
 
 ## Video Demo
-[Google Drive Video walkthrough video](https://drive.google.com/file/d/1dlXffw_Y-3RzC6QSNPsloMB1PfhbJV2O/view?usp=sharing) 
+[Google Drive Video Walkthrough Video](https://drive.google.com/file/d/1dlXffw_Y-3RzC6QSNPsloMB1PfhbJV2O/view?usp=sharing) 
 
 
 ## Credits
